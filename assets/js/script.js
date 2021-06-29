@@ -10,6 +10,7 @@ var getForecast = function() {
         })
         .then(function(data) {
             for (var i = 0; i < 6; i++) {
+                console.log(data);
                 console.log(data.daily[i].weather[0].main); //Weather
                 console.log(data.daily[i].temp.day); //Temperature
                 console.log(data.daily[i].wind_speed); //Wind Speed
@@ -20,3 +21,10 @@ var getForecast = function() {
 }
 
 getForecast();
+
+var day = new Date();
+var tommorow = new Date(day);
+tommorow.setDate(tommorow.getDate() + 1);
+
+console.log(day);
+console.log(tommorow);
