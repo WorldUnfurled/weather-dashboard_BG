@@ -8,9 +8,9 @@ var wind;
 var humidity;
 var uvi;
 
-var day = new Date();
+var today = new Date();
 
-var days = [[day]];
+var days = [[today]];
 var forecastObj = {};
 
 
@@ -36,8 +36,6 @@ function getForecast() {
                 forecastObj[i].push(humidity);
                 forecastObj[i].push(uvi);
             }
-
-            console.log(forecastObj);
         })
 }
 
@@ -46,14 +44,10 @@ getForecast();
 function getday() {
     for (var i = 1; i < 6; i++) {
         newDay = new Date(days[i-1]);
-        console.log(days[i-1]);
-        // console.log(newDay);
         newDay.setDate(newDay.getDate() + 1);
-        // console.log(newDay);
         days[i] = [];
         days[i].push(newDay);
     }
-    console.log(days);
 };
 
 getday();
