@@ -5,9 +5,6 @@ var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=
 
 var n = function() {
     fetch(requestURL)
-        .then(function (response) {
-            return response.json();
-        })
         .then(function (data) {
             console.log(data);
         })
