@@ -9,14 +9,34 @@ var getForecast = function() {
             return response.json();
         })
         .then(function(data) {
+            var weather;
+            var temp;
+            var wind;
+            var humidity;
+            var uvi;
+
+            var forecastObj = {
+                0: [],
+                1: [],
+                2: [],
+                3: [],
+                4: [],
+                5: []
+            };
             for (var i = 0; i < 6; i++) {
-                console.log(data);
-                console.log(data.daily[i].weather[0].main); //Weather
-                console.log(data.daily[i].temp.day); //Temperature
-                console.log(data.daily[i].wind_speed); //Wind Speed
-                console.log(data.daily[i].humidity); //Humidity
-                console.log(data.daily[i].uvi); //UV Index
+                weather = data.daily[i].weather[0].main; //Weather
+                temp = data.daily[i].temp.day; //Temperature
+                wind = data.daily[i].wind_speed; //Wind Speed
+                humidity = data.daily[i].humidity; //Humidity
+                uvi = data.daily[i].uvi; //UV Index
+
+                forecastObj[i].push(weather);
+                forecastObj[i].push(temp);
+                forecastObj[i].push(wind);
+                forecastObj[i].push(humidity);
+                forecastObj[i].push(uvi);
             }
+            console.log(forecastObj);
         })
 }
 
