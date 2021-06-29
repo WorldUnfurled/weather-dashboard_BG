@@ -3,11 +3,14 @@ var city;
 var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&appid=" + key;
 
 
-var n = function() {
+var getForecast = function() {
     fetch(requestURL)
-        .then(function (data) {
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
             console.log(data);
         })
 }
 
-n();
+getForecast();
