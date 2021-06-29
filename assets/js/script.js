@@ -8,10 +8,13 @@ var wind;
 var humidity;
 var uvi;
 
+var day = new Date();
+
+var days = [[day]];
 var forecastObj = {};
 
 
-var getForecast = function() {
+function getForecast() {
     fetch(requestURL)
         .then(function(response) {
             return response.json();
@@ -40,26 +43,17 @@ var getForecast = function() {
 
 getForecast();
 
-var day = new Date();
+function getday() {
+    for (var i = 1; i < 6; i++) {
+        newDay = new Date(days[i-1]);
+        console.log(days[i-1]);
+        // console.log(newDay);
+        newDay.setDate(newDay.getDate() + 1);
+        // console.log(newDay);
+        days[i] = [];
+        days[i].push(newDay);
+    }
+    console.log(days);
+};
 
-var tommorow = new Date(day);
-tommorow.setDate(tommorow.getDate() + 1);
-
-var twoDays = new Date(tommorow);
-twoDays.setDate(twoDays.getDate() + 1);
-
-var threeDays = new Date(twoDays);
-threeDays.setDate(threeDays.getDate() + 1);
-
-var fourDays = new Date(threeDays);
-fourDays.setDate(fourDays.getDate() + 1);
-
-var fiveDays = new Date(fourDays);
-fiveDays.setDate(fiveDays.getDate() + 1);
-
-console.log(day);
-console.log(tommorow);
-console.log(twoDays);
-console.log(threeDays);
-console.log(fourDays);
-console.log(fiveDays);
+getday();
