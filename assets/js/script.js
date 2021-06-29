@@ -23,6 +23,7 @@ var getForecast = function() {
                 4: [],
                 5: []
             };
+
             for (var i = 0; i < 6; i++) {
                 weather = data.daily[i].weather[0].main; //Weather
                 temp = data.daily[i].temp.day; //Temperature
@@ -36,6 +37,7 @@ var getForecast = function() {
                 forecastObj[i].push(humidity);
                 forecastObj[i].push(uvi);
             }
+
             console.log(forecastObj);
         })
 }
@@ -43,8 +45,25 @@ var getForecast = function() {
 getForecast();
 
 var day = new Date();
+
 var tommorow = new Date(day);
 tommorow.setDate(tommorow.getDate() + 1);
 
+var twoDays = new Date(tommorow);
+twoDays.setDate(twoDays.getDate() + 1);
+
+var threeDays = new Date(twoDays);
+threeDays.setDate(threeDays.getDate() + 1);
+
+var fourDays = new Date(threeDays);
+fourDays.setDate(fourDays.getDate() + 1);
+
+var fiveDays = new Date(fourDays);
+fiveDays.setDate(fiveDays.getDate() + 1);
+
 console.log(day);
 console.log(tommorow);
+console.log(twoDays);
+console.log(threeDays);
+console.log(fourDays);
+console.log(fiveDays);
