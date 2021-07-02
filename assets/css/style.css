@@ -25,7 +25,7 @@ aside {
 }
 
 main {
-    height: 700px;
+    height: 100vh;
     flex-grow: 5;
     background-color: red;
 }

@@ -23,10 +23,15 @@ function getForecast() {
 
             for (var i = 0; i < 6; i++) {
                 weather = data.daily[i].weather[0].main; //Weather
+                console.log(data.daily[i].weather[0].main);
                 temp = data.daily[i].temp.day; //Temperature
+                console.log(data.daily[i].temp.day);
                 wind = data.daily[i].wind_speed; //Wind Speed
+                console.log(data.daily[i].wind_speed);
                 humidity = data.daily[i].humidity; //Humidity
+                console.log(data.daily[i].humidity);
                 uvi = data.daily[i].uvi; //UV Index
+                console.log(data.daily[i].uvi);
 
                 forecastObj[i] = [];
 
