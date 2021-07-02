@@ -22,7 +22,41 @@ nav {
 aside {
     flex-grow: 1;
     min-width: 200px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+#search-desc {
+    font-size: 40px;
+    padding: 10px 10px 10px 0;
+}
+
+#search-input {
+    font-size: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 325px;
+}
+
+#search-button {
+    padding: 5px 5px 5px;
+    margin-top: 10px;
+    font-size: 30px;
+    width: 340px;
+    background-color: blue;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
+
+hr {
+    margin-top: 20px;
+    width: 90%;               
+    background-color:blueviolet;
+    height: 1px;
+  }
 
 main {
     height: 100vh;
