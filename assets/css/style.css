@@ -56,10 +56,20 @@ hr {
     width: 90%;               
     background-color:blueviolet;
     height: 1px;
-  }
+}
+
+.aux-search-button {
+    padding: 5px 5px 5px;
+    margin-top: 20px;
+    font-size: 30px;
+    width: 340px;
+    background-color: blue;
+    color: white;
+    border-radius: 3px;
+    border: none;
+}
 
 main {
     height: 100vh;
     flex-grow: 5;
-    background-color: red;
 }
