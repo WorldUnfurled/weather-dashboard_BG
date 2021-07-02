@@ -86,6 +86,14 @@ header {
     height: 30%;
     width: 95%;
     margin: 15px 0 15px 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.header-text {
+    font-size: 1.5em;
 }
 
 #forecast-header {
@@ -111,10 +119,9 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 5px;
+    padding: 10px;
 }
 
 .card-text {
     font-size: 1.5em;
-    font-weight: bold;
 }
