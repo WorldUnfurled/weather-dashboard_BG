@@ -70,17 +70,17 @@ function getDate() {
 
     for (var i = 0; i < splitDates.length; i++) {
         splitDates[i] = splitDates[i].split(",");
-    }
-   
-    for (var i = 0; i < splitDates.length; i++) {
         splitDates[i][0] = convertDay(splitDates[i][0]);
     }
+   
+    // for (var i = 0; i < splitDates.length; i++) {
+        
+    // }
 
     return splitDates;
 };
 
-console.log(getDate()[0]);
-
+console.log(getDate()[2]);
 
 function convertDay(month) { 
     for (var i = 0; i < monthAbbr.length; i++) {
