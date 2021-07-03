@@ -48,7 +48,10 @@ var newDayString;
 var newDaySplit;
 var newDaySlicify;
 
-function getDay() {
+var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function getDate() {
+
     for (var i = 1; i < 6; i++) {
         newDay = new Date(days[i-1]);
         newDay.setDate(newDay.getDate() + 1);
@@ -64,8 +67,26 @@ function getDay() {
         splitDates[n] = "";
         splitDates[n] += newDaySlice;
     }
+
+    for (var i = 0; i < splitDates.length; i++) {
+        splitDates[i] = splitDates[i].split(",");
+    }
+   
+    for (var i = 0; i < splitDates.length; i++) {
+        splitDates[i][0] = convertDay(splitDates[i][0]);
+    }
+
+    return splitDates;
 };
 
-console.log(splitDates);
+console.log(getDate()[0]);
 
-getDay();
+
+function convertDay(month) { 
+    for (var i = 0; i < monthAbbr.length; i++) {
+        console.log(monthAbbr[i]);
+        if (month === monthAbbr[i]) {
+            return String(i + 1);
+        }
+    }
+}
