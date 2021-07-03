@@ -54,15 +54,17 @@ function getForecast() {
                 $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
             }
 
+            console.log(forecastObj[5][0]);
+
             var cardText;
-            for (i = 0; i < 6; i++) {
+            for (i = 0; i < 5; i++) {
                 cardText = "";
 
                 cardText += '<h3 class="card-text">' + cardDates[i + 1] + '</h3>'
-                cardText += '<p class="card-text">{ICON}</p>'
-                cardText += '<p class="card-text">Temp: </p>'
-                cardText += '<p class="card-text">Wind: </p>'
-                cardText += '<p class="card-text">Humidity: </p>'
+                cardText += '<img src="' + forecastObj[i + 1][0] + '">'
+                cardText += '<p class="card-text">' + 'Temp: ' + forecastObj[i + 1][1] + '</p>'
+                cardText += '<p class="card-text">' + 'Wind: ' + forecastObj[i + 1][2] + '</p>'
+                cardText += '<p class="card-text">' + 'Humidity: ' + forecastObj[i + 1][3] + '</p>'
     
                 $('#card-container').children('div').eq(i).html(cardText);
             }
