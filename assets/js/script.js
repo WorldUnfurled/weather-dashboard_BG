@@ -50,6 +50,8 @@ var newDaySlicify;
 
 var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+var cardDates = [];
+
 function getDate() {
 
     for (var i = 1; i < 6; i++) {
@@ -72,15 +74,9 @@ function getDate() {
         splitDates[i] = splitDates[i].split(",");
         splitDates[i][0] = convertDay(splitDates[i][0]);
     }
-   
-    // for (var i = 0; i < splitDates.length; i++) {
-        
-    // }
 
     return splitDates;
 };
-
-console.log(getDate()[2]);
 
 function convertDay(month) { 
     for (var i = 0; i < monthAbbr.length; i++) {
@@ -90,3 +86,11 @@ function convertDay(month) {
         }
     }
 }
+
+function makeCardDates() {
+    for (var i = 0; i < getDate().length; i++) {
+        cardDates.push(getDate()[i][0] + "/" + getDate()[i][1] + "/" + getDate()[i][2]);
+    }
+}
+
+makeCardDates();
