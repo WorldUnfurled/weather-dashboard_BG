@@ -10,7 +10,9 @@ var uvi;
 
 var today = new Date();
 
-var days = [[today]];
+var days = [String(today)];
+var splitDates = [];
+var dates = [];
 var forecastObj = {};
 
 
@@ -23,15 +25,10 @@ function getForecast() {
 
             for (var i = 0; i < 6; i++) {
                 weather = data.daily[i].weather[0].main; //Weather
-                console.log(data.daily[i].weather[0].main);
                 temp = data.daily[i].temp.day; //Temperature
-                console.log(data.daily[i].temp.day);
                 wind = data.daily[i].wind_speed; //Wind Speed
-                console.log(data.daily[i].wind_speed);
                 humidity = data.daily[i].humidity; //Humidity
-                console.log(data.daily[i].humidity);
                 uvi = data.daily[i].uvi; //UV Index
-                console.log(data.daily[i].uvi);
 
                 forecastObj[i] = [];
 
@@ -46,13 +43,29 @@ function getForecast() {
 
 getForecast();
 
-function getday() {
+var daySplit;
+var newDayString;
+var newDaySplit;
+var newDaySlicify;
+
+function getDay() {
     for (var i = 1; i < 6; i++) {
         newDay = new Date(days[i-1]);
         newDay.setDate(newDay.getDate() + 1);
-        days[i] = [];
-        days[i].push(newDay);
+        newDayString = String(newDay);
+
+        days[i] = "";
+        days[i] += newDayString;
+    }
+
+    for (var n = 0; n < days.length; n++) {
+        newDaySplit = days[n].split(" ");
+        newDaySlice = newDaySplit.slice(1, 4);
+        splitDates[n] = "";
+        splitDates[n] += newDaySlice;
     }
 };
 
-getday();
+console.log(splitDates);
+
+getDay();
