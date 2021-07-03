@@ -1,5 +1,5 @@
 var key = '4df499f07bd89e71ed347810c57fb5b1';
-var cityName = "London";
+var cityName = "Orlando";
 var preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key;
 var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=imperial&appid=" + key;
 
