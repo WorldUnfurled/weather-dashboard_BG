@@ -54,9 +54,22 @@ function getForecast() {
                 $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
             }
 
-            for (var i = 0; i < 6; i++) {
-                
+            var cardText;
+            for (i = 0; i < 6; i++) {
+                cardText = "";
+
+                cardText += '<h3 class="card-text">' + cardDates[i + 1] + '</h3>'
+                cardText += '<p class="card-text">{ICON}</p>'
+                cardText += '<p class="card-text">Temp: </p>'
+                cardText += '<p class="card-text">Wind: </p>'
+                cardText += '<p class="card-text">Humidity: </p>'
+    
+                $('#card-container').children('div').eq(i).html(cardText);
             }
+
+            // for (var i = 0; i < 6; i++) {
+            //     $('#card-container').children('div').eq(0).children('p').eq(j).text(forecastObj[i][j]);
+            // }
             console.log(forecastObj[2]);
         })
 }
