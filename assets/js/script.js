@@ -31,7 +31,7 @@ function getForecast() {
         .then(data => {
             var forecastObj = {};
             for (var i = 0; i < 6; i++) {
-                weather = data.daily[i].weather[0].main; //Weather
+                weather = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png'; //Weather
                 temp = data.daily[i].temp.day; //Temperature
                 wind = data.daily[i].wind_speed; //Wind Speed
                 humidity = data.daily[i].humidity; //Humidity
@@ -47,12 +47,13 @@ function getForecast() {
                 console.log($('header').children('p').eq(0));
             }
 
-            $('header').children('h2').text('{CITY}' + " " + cardDates[0] + " " + forecastObj[0][0]);
+            $('header').children('h2').text('{CITY}' + " " + cardDates[0] + " ");
+            $('#header-icon').attr('src', forecastObj[0][0]);
 
             for (var i = 0; i < 4; i++) {
                 $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
             }
-            console.log(forecastObj[0]);
+            console.log(forecastObj[2]);
         })
 }
 

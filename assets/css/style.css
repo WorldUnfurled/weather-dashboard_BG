@@ -92,6 +92,11 @@ header {
     justify-content: space-around;
 }
 
+#header-heading {
+    display: flex;
+    flex-direction: row;
+}
+
 .header-text {
     font-size: 1.5em;
 }
