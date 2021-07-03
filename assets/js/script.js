@@ -1,6 +1,9 @@
 var key = '4df499f07bd89e71ed347810c57fb5b1';
-var city;
+var cityName = "London";
+var preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key;
 var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=imperial&appid=" + key;
+
+console.log(preRequestURL);
 
 var weather;
 var temp;
@@ -24,55 +27,62 @@ var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 
 var cardDates = [];
 
 function getForecast() {
-    fetch(requestURL)
-        .then(response =>{
+    fetch(preRequestURL)
+        .then(response => {
             return response.json();
         })
         .then(data => {
-            var forecastObj = {};
-            for (var i = 0; i < 6; i++) {
-                weather = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png'; //Weather
-                temp = data.daily[i].temp.day; //Temperature
-                wind = data.daily[i].wind_speed; //Wind Speed
-                humidity = data.daily[i].humidity; //Humidity
-                uvi = data.daily[i].uvi; //UV Index
+            console.log(data.coord.lat);
+            console.log(data.coord.lon);
 
-                forecastObj[i] = [];
+            var newURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data.coord.lat + '&lon=' + data.coord.lon + '&exclude=hourly,minutely&units=imperial&appid=' + key;
 
-                forecastObj[i].push(weather);
-                forecastObj[i].push(temp);
-                forecastObj[i].push(wind);
-                forecastObj[i].push(humidity);
-                forecastObj[i].push(uvi);
-                console.log($('header').children('p').eq(0));
-            }
+            fetch(newURL)
+                .then(response =>{
+                    return response.json();
+                })
+                .then(data => {
+                    var forecastObj = {};
+                    for (var i = 0; i < 6; i++) {
+                        weather = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png'; //Weather
+                        temp = data.daily[i].temp.day; //Temperature
+                        wind = data.daily[i].wind_speed; //Wind Speed
+                        humidity = data.daily[i].humidity; //Humidity
+                        uvi = data.daily[i].uvi; //UV Index
+        
+                        forecastObj[i] = [];
+        
+                        forecastObj[i].push(weather);
+                        forecastObj[i].push(temp);
+                        forecastObj[i].push(wind);
+                        forecastObj[i].push(humidity);
+                        forecastObj[i].push(uvi);
+                    }
 
-            $('#header-heading').children('h2').text('{CITY}' + " " + cardDates[0]);
-            $('#header-icon').attr('src', forecastObj[0][0]);
+                    $('#header-heading').children('h2').text('{CITY}' + " " + cardDates[0]);
+                    $('#header-icon').attr('src', forecastObj[0][0]);
 
-            for (var i = 0; i < 4; i++) {
-                $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
-            }
+                    for (var i = 0; i < 4; i++) {
+                        $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
+                    }
 
-            console.log(forecastObj[5][0]);
+                    console.log(forecastObj[5][0]);
 
-            var cardText;
-            for (i = 0; i < 5; i++) {
-                cardText = "";
+                    var cardText;
+                    for (i = 0; i < 5; i++) {
+                        cardText = "";
 
-                cardText += '<h3 class="card-text">' + cardDates[i + 1] + '</h3>'
-                cardText += '<img src="' + forecastObj[i + 1][0] + '">'
-                cardText += '<p class="card-text">' + 'Temp: ' + forecastObj[i + 1][1] + '</p>'
-                cardText += '<p class="card-text">' + 'Wind: ' + forecastObj[i + 1][2] + '</p>'
-                cardText += '<p class="card-text">' + 'Humidity: ' + forecastObj[i + 1][3] + '</p>'
-    
-                $('#card-container').children('div').eq(i).html(cardText);
-            }
+                        cardText += '<h3 class="card-text">' + cardDates[i + 1] + '</h3>'
+                        cardText += '<img src="' + forecastObj[i + 1][0] + '">'
+                        cardText += '<p class="card-text">' + 'Temp: ' + forecastObj[i + 1][1] + '</p>'
+                        cardText += '<p class="card-text">' + 'Wind: ' + forecastObj[i + 1][2] + '</p>'
+                        cardText += '<p class="card-text">' + 'Humidity: ' + forecastObj[i + 1][3] + '</p>'
+            
+                        $('#card-container').children('div').eq(i).html(cardText);
+                    }
+                    console.log(forecastObj[2]); 
 
-            // for (var i = 0; i < 6; i++) {
-            //     $('#card-container').children('div').eq(0).children('p').eq(j).text(forecastObj[i][j]);
-            // }
-            console.log(forecastObj[2]);
+                })
         })
 }
 
