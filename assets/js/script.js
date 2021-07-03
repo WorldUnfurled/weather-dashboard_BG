@@ -59,7 +59,7 @@ function getForecast() {
                         forecastObj[i].push(uvi);
                     }
 
-                    $('#header-heading').children('h2').text('{CITY}' + " " + cardDates[0]);
+                    $('#header-heading').children('h2').text(cityName + " " + cardDates[0]);
                     $('#header-icon').attr('src', forecastObj[0][0]);
 
                     for (var i = 0; i < 4; i++) {
