@@ -28,12 +28,12 @@
             <button type="submit" class="aux-search-button">Atlanta</button>
         </aside>
         <main id="main-content">
-            <header>
+            <header id="header">
                 <h2>{CITY}{DATE}{ICON}</h2>
-                <p class="header-text">Temp: </p>
-                <p class="header-text">Wind: </p>
-                <p class="header-text">Humidity: </p>
-                <p class="header-text">UV Index: </p>
+                <p class="header-text">Temp: <span></span></p>
+                <p class="header-text">Wind: <span></span></p>
+                <p class="header-text">Humidity: <span></span></p>
+                <p class="header-text">UV Index: <span></span></p>
             </header>
             <h2 id="forecast-header">5-Day Forecast:</h2>
             <section id="card-container">
@@ -76,5 +76,6 @@
         </main>
     </section>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </html>

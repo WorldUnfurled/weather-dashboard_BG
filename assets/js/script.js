@@ -13,16 +13,24 @@ var today = new Date();
 var days = [String(today)];
 var splitDates = [];
 var dates = [];
-var forecastObj = {};
 
+var daySplit;
+var newDayString;
+var newDaySplit;
+var newDaySlicify;
+
+var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+var cardDates = [];
 
 function getForecast() {
     fetch(requestURL)
-        .then(function(response) {
+        .then(response =>{
             return response.json();
         })
-        .then(function(data) {
-
+        .then(data => {
+            var forecastObj = {};
+            var pEl = $('header').p;
             for (var i = 0; i < 6; i++) {
                 weather = data.daily[i].weather[0].main; //Weather
                 temp = data.daily[i].temp.day; //Temperature
@@ -38,19 +46,9 @@ function getForecast() {
                 forecastObj[i].push(humidity);
                 forecastObj[i].push(uvi);
             }
+            console.log(forecastObj[0]);
         })
 }
-
-getForecast();
-
-var daySplit;
-var newDayString;
-var newDaySplit;
-var newDaySlicify;
-
-var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-var cardDates = [];
 
 function getDate() {
 
@@ -80,7 +78,6 @@ function getDate() {
 
 function convertDay(month) { 
     for (var i = 0; i < monthAbbr.length; i++) {
-        console.log(monthAbbr[i]);
         if (month === monthAbbr[i]) {
             return String(i + 1);
         }
@@ -94,3 +91,4 @@ function makeCardDates() {
 }
 
 makeCardDates();
+getForecast();
