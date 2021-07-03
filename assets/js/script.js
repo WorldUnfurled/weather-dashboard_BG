@@ -47,13 +47,12 @@ function getForecast() {
                 console.log($('header').children('p').eq(0));
             }
 
+            $('header').children('h2').text('{CITY}' + " " + cardDates[0] + " " + forecastObj[0][0]);
+
             for (var i = 0; i < 4; i++) {
-                $('header').children('p').eq(i).children('span').text(forecastObj[i][i]);
+                $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
             }
             console.log(forecastObj[0]);
-            // for () {
-
-            // }
         })
 }
 
