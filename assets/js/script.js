@@ -30,7 +30,6 @@ function getForecast() {
         })
         .then(data => {
             var forecastObj = {};
-            var pEl = $('header').p;
             for (var i = 0; i < 6; i++) {
                 weather = data.daily[i].weather[0].main; //Weather
                 temp = data.daily[i].temp.day; //Temperature
@@ -45,8 +44,16 @@ function getForecast() {
                 forecastObj[i].push(wind);
                 forecastObj[i].push(humidity);
                 forecastObj[i].push(uvi);
+                console.log($('header').children('p').eq(0));
+            }
+
+            for (var i = 0; i < 4; i++) {
+                $('header').children('p').eq(i).children('span').text(forecastObj[i][i]);
             }
             console.log(forecastObj[0]);
+            // for () {
+
+            // }
         })
 }
 
