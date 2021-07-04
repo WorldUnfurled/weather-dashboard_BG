@@ -14,25 +14,27 @@
     </nav>
     <section id="container">
         <aside id="search-section">
-            <form action="">
-                <label id="search-desc">Search for a City:</label>
-                <input type="text" name="search-input" id="search-input" method="put" placeholder="Search" value="">
+            <form id="search-form">
+                <label id="search-desc" for="search-input">Search for a City:</label>
+                <input type="text" name="search-input" id="search-input" placeholder="Search">
                 <button type="submit" id="search-button">Search</button>
                 <hr>
-                <button type="submit" class="aux-search-button">Chicago</button>
-                <button type="submit" class="aux-search-button">Austin</button>
-                <button type="submit" class="aux-search-button">New York</button>
-                <button type="submit" class="aux-search-button">Orlando</button>
-                <button type="submit" class="aux-search-button">San Francisco</button>
-                <button type="submit" class="aux-search-button">Seattle</button>
-                <button type="submit" class="aux-search-button">Denver</button>
-                <button type="submit" class="aux-search-button">Atlanta</button>
+                <div id="form-buttons">
+                    <button type="submit" class="aux-search-button">Chicago</button>
+                    <button type="submit" class="aux-search-button">Austin</button>
+                    <button type="submit" class="aux-search-button">New York</button>
+                    <button type="submit" class="aux-search-button">Orlando</button>
+                    <button type="submit" class="aux-search-button">San Francisco</button>
+                    <button type="submit" class="aux-search-button">Seattle</button>
+                    <button type="submit" class="aux-search-button">Denver</button>
+                    <button type="submit" class="aux-search-button">Atlanta</button>
+                </div>
             </form>
         </aside>
         <main id="main-content">
             <header id="header">
                 <div id="header-heading">
-                    <h2>{CITY}</h2><img id="header-icon" src="#">
+                    <h2></h2><img id="header-icon">
                 </div>
                 <p class="header-text">Temp: <span></span></p>
                 <p class="header-text">Wind: <span></span></p>

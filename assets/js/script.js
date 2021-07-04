@@ -1,7 +1,6 @@
 var key = '4df499f07bd89e71ed347810c57fb5b1';
 var cityName = "Orlando";
-var preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + key;
-var requestURL = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,minutely&units=imperial&appid=" + key;
+var preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + localStorage.getItem('newCity') + '&appid=' + key;
 
 console.log(preRequestURL);
 
@@ -25,6 +24,22 @@ var newDaySlicify;
 var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 var cardDates = [];
+
+var searchForm = $('#search-form');
+
+console.log(searchForm);
+
+searchForm.on("submit", function(event){
+    event.stopImmediatePropagation();
+    localStorage.setItem('newCity', $('#search-input').val());
+})
+
+var formButtons = $('form-buttons');
+
+formButtons.on("click", 'aux-search-button', function(event){
+    event.stopImmediatePropagation();
+    localStorage.setItem('newCity', $('aux-search-button').text);
+})
 
 function getForecast() {
     fetch(preRequestURL)
@@ -59,7 +74,7 @@ function getForecast() {
                         forecastObj[i].push(uvi);
                     }
 
-                    $('#header-heading').children('h2').text(cityName + " " + cardDates[0]);
+                    $('#header-heading').children('h2').text(localStorage.getItem('newCity') + " " + cardDates[0]);
                     $('#header-icon').attr('src', forecastObj[0][0]);
 
                     for (var i = 0; i < 4; i++) {
@@ -125,6 +140,8 @@ function makeCardDates() {
         cardDates.push(getDate()[i][0] + "/" + getDate()[i][1] + "/" + getDate()[i][2]);
     }
 }
+
+console.log($('#search-input').val());
 
 makeCardDates();
 getForecast();
