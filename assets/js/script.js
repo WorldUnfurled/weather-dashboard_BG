@@ -36,9 +36,9 @@ searchForm.on("submit", function(event){
 
 var formButtons = $('form-buttons');
 
-formButtons.on("click", 'aux-search-button', function(event){
+formButtons.on("click", 'button', function(event){
     event.stopImmediatePropagation();
-    localStorage.setItem('newCity', $('aux-search-button').text);
+    localStorage.setItem('newCity', $('button').text);
 })
 
 function getForecast() {
