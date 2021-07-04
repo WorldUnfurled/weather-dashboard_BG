@@ -1,5 +1,5 @@
 # weather-dashboard_BG
-
+This app is intended to provide the user a week-long weather forecast based on the city they input. A relevant weather icon, the date, temperature, wind, humidity, and the UV index for the current day is provided.
 ## HTML
 * _Sidebar_
 * Contains form with search elements
@@ -47,4 +47,4 @@
 * https://github.com/WorldUnfurled/weather-dashboard_BG
 * https://worldunfurled.github.io/weather-dashboard_BG/
 
-![screenshot](assets/images/weather_dashboard.png);
+![screenshot](assets/images/weather_dashboard.png)
