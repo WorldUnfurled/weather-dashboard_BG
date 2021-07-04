@@ -1,44 +1,32 @@
-var key = '4df499f07bd89e71ed347810c57fb5b1';
-var cityName = "Orlando";
-var preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + localStorage.getItem('newCity') + '&appid=' + key;
+const key = '4df499f07bd89e71ed347810c57fb5b1';
+const preRequestURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + localStorage.getItem('newCity') + '&appid=' + key;
 
-console.log(preRequestURL);
+let weather;
+let temp;
+let wind;
+let humidity;
+let uvi;
 
-var weather;
-var temp;
-var wind;
-var humidity;
-var uvi;
+const today = new Date();
 
-var today = new Date();
+const days = [String(today)];
+const splitDates = [];
+const dates = [];
 
-var days = [String(today)];
-var splitDates = [];
-var dates = [];
+let daySplit;
+let newDayString;
+let newDaySplit;
+let newDaySlicify;
 
-var daySplit;
-var newDayString;
-var newDaySplit;
-var newDaySlicify;
+const monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-var monthAbbr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const cardDates = [];
 
-var cardDates = [];
-
-var searchForm = $('#search-form');
-
-console.log(searchForm);
+let searchForm = $('#search-form');
 
 searchForm.on("submit", function(event){
     event.stopImmediatePropagation();
     localStorage.setItem('newCity', $('#search-input').val());
-})
-
-var formButtons = $('form-buttons');
-
-formButtons.on("click", 'button', function(event){
-    event.stopImmediatePropagation();
-    localStorage.setItem('newCity', $('button').text);
 })
 
 function getForecast() {
@@ -50,14 +38,14 @@ function getForecast() {
             console.log(data.coord.lat);
             console.log(data.coord.lon);
 
-            var newURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data.coord.lat + '&lon=' + data.coord.lon + '&exclude=hourly,minutely&units=imperial&appid=' + key;
+            const newURL = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + data.coord.lat + '&lon=' + data.coord.lon + '&exclude=hourly,minutely&units=imperial&appid=' + key;
 
             fetch(newURL)
                 .then(response =>{
                     return response.json();
                 })
                 .then(data => {
-                    var forecastObj = {};
+                    const forecastObj = {};
                     for (var i = 0; i < 6; i++) {
                         weather = 'http://openweathermap.org/img/wn/' + data.daily[i].weather[0].icon + '@2x.png'; //Weather
                         temp = data.daily[i].temp.day; //Temperature
@@ -81,9 +69,7 @@ function getForecast() {
                         $('header').children('p').eq(i).children('span').text(forecastObj[0][i+1]);
                     }
 
-                    console.log(forecastObj[5][0]);
-
-                    var cardText;
+                    let cardText;
                     for (i = 0; i < 5; i++) {
                         cardText = "";
 
@@ -95,7 +81,6 @@ function getForecast() {
             
                         $('#card-container').children('div').eq(i).html(cardText);
                     }
-                    console.log(forecastObj[2]); 
 
                 })
         })
@@ -140,8 +125,6 @@ function makeCardDates() {
         cardDates.push(getDate()[i][0] + "/" + getDate()[i][1] + "/" + getDate()[i][2]);
     }
 }
-
-console.log($('#search-input').val());
 
 makeCardDates();
 getForecast();
