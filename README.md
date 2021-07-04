@@ -1,6 +1,6 @@
 # weather-dashboard_BG
 
-##HTML
+## HTML
 * _Sidebar_
 * Contains form with search elements
 * The search works great (finally!), but the buttons do not
@@ -11,7 +11,7 @@
 * Temperature, Wind, Humidity, and UV Index (in header) are dynamically updated
 * An image icon on the cards is also dynamically updated based on the weather condition
 
-##CSS
+## CSS
 * _Title Bar_
 * Dark blue linear gradient background color
 
@@ -23,7 +23,7 @@
 * Flex seemed to be the easiest to use here, but grid could also have been applicable and would have required less code in hindsight
 * Navy blue background color for cards and buttons
 
-##JS
+## JS
 * _Search_
 * User input (submission of the form) updates the main fetch link parameter through localStorage
 * The localStorage is set based on the value of the user search input
@@ -43,3 +43,8 @@
 * The header is updated first since it contains extra elements (City, UV Index)
 * The cards are then updated with a for loop that creates the inner HTML of their respective divs
 
+## LINKS
+* https://github.com/WorldUnfurled/weather-dashboard_BG
+* https://worldunfurled.github.io/weather-dashboard_BG/
+
+![screenshot](assets/images/weather_dashboard.png);
